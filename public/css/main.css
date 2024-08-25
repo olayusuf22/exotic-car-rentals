@@ -5,13 +5,29 @@
 
 body {
   margin: 0;
+  background-image: url('https://wallpapers.com/downloads/high/blue-sports-car-sunrise-qt9gou1a6u74h7oi.webp');
+  background-size: cover;
+  background-position: center;
   height: 100vh;
   display: grid;
   grid-template-rows: 8vh 1fr 4vh;
 }
 
+.city-container {
+  margin-top: 30px;
+}
+
+.city-select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
 nav, footer {
-  background-color:rgb(200, 173, 230);
+  background-color:rgb(181, 172, 191);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,5 +75,16 @@ form * {
 
 button:hover {
   background-color: lightslategray;
-  color: white;
+  color: rgb(80, 78, 88);
+}
+
+.date-picker-container {
+  margin: 20px 0;
+}
+.date-picker-container label {
+  margin-right: 10px;
+}
+input[type="date"] {
+  padding: 5px;
+  margin-right: 20px;
 }

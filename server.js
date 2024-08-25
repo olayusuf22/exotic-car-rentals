@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 const session = require('express-session');
+const carRoutes = require('./controllers/cars');
+
 
 const app = express();
 
@@ -41,7 +43,7 @@ const ensureLoggedIn = require('./middleware/ensureLoggedIn');
 // '/auth' is a "starts with" path that all paths
 // within authCtrl are appended to
 app.use('/auth', require('./controllers/auth'));
-app.use('/todos', require('./controllers/todos'));
+app.use('/car', require('./controllers/cars'));
 // If you wanted to protect ALL routes 
 // app.use('/todos', ensureLoggedIn, require('./controllers/todos'));
 
@@ -56,6 +58,26 @@ app.get('/', async (req, res) => {
 const port = process.env.PORT ? process.env.PORT : "3000";
 // An alternative to above
 // const port = process.env.PORT || "3000";
+
+
+app.get('/', (req, res) => {
+  // Fetch or define the cars data
+  const cars = [
+    {
+      name: 'Ferrari',
+      locations: ['New York', 'Los Angeles']
+    },
+    {
+      name: 'Lamborghini',
+      locations: ['Miami', 'Chicago']
+    }
+    // Add more cars as needed
+  ];
+
+  // Render the home.ejs view, passing the cars data
+  res.render('home', { cars });
+});
+
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

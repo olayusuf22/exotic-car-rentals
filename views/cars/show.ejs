@@ -1,0 +1,32 @@
+<%- include('../partials/header.ejs') %>
+
+<!-- Car Details -->
+<h1><%= car.carModel %> (<%= car.year %>)</h1>
+
+<div class="car-details">
+    <h3>Rental Price: $<%= car.pricePerDay %> per day</h3>
+    <ul>
+        <% if (car.type) { %>
+            <li>Type: <%= car.type %></li>
+        <% } %>
+        <% if (car.availabilityStatus) { %>
+            <li>Status: <%= car.availabilityStatus ? 'Available' : 'Not Available' %></li>
+        <% } %>
+        <% if (car.image) { %>
+            <li>
+                <img src="<%= car.image %>" alt="<%= car.carModel %>" style="max-width: 300px; height: auto;">
+            </li>
+        <% } %>
+    </ul>
+</div>
+
+<!-- Edit and Delete Options -->
+<div class="action-buttons">
+    <a href="/cars/<%= car._id %>/edit" class="btn-edit">Modify Car Details</a>
+
+    <form action="/cars/<%= car._id %>?_method=DELETE" method="POST" class="btn-delete-form">
+        <button type="submit" class="btn-delete">Remove Car</button>
+    </form>
+</div>
+
+<%- include('../partials/footer.ejs') %>

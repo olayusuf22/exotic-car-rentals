@@ -1,0 +1,21 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Your Vehicle Collection</h1>
+
+<% if (cars.length > 0) { %>
+    <div class="car-list">
+        <% cars.forEach(function(car) { %>
+            <div class="car-item">
+                <h2><a href="/cars/<%= car._id %>"><%= car.carModel %> (<%= car.year %>)</a></h2>
+                <p>Category: <%= car.type %></p>
+                <p>Rental Rate: $<%= car.pricePerDay %>/day</p>
+            </div>
+        <% }) %>
+    </div>
+<% } else { %>
+    <div class="no-cars">
+        <p>You have not added any vehicles to your collection yet. Start by <a href="/cars/new">adding a car</a>.</p>
+    </div>
+<% } %>
+
+<%- include('../partials/footer.ejs') %>

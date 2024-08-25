@@ -1,0 +1,53 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Modify Car Details: <%= car.carModel %></h1>
+
+<form action="/cars/<%= car._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
+    <div>
+        <label for="car-model-input">Model:</label>
+        <input type="text" name="carModel" id="car-model-input" value="<%= car.carModel %>" required />
+    </div>
+
+    <div>
+        <label for="manufacture-year">Manufacture Year:</label>
+        <input type="number" name="year" id="manufacture-year" value="<%= car.year %>" min="1900" max="<%= new Date().getFullYear() %>" required />
+    </div>
+
+    <div>
+        <label for="car-category">Category:</label>
+        <select name="type" id="car-category" required>
+            <option value="<%= car.type %>" selected><%= car.type %></option>
+            <% types.forEach((type) => { %>
+                <option value="<%= type %>"><%= type %></option>
+            <% }) %>
+        </select>
+    </div>
+
+    <div>
+        <label for="rental-rate">Rental Rate (per day):</label>
+        <input type="number" name="pricePerDay" id="rental-rate" value="<%= car.pricePerDay %>" step="0.01" required />
+    </div>
+
+    <div>
+        <label for="car-image-upload">Upload Image:</label>
+        <% if (car.image) { %>
+            <img src="<%= car.image %>" alt="Car Image" style="width:200px;height:auto;display:block;margin-bottom:10px;">
+        <% } %>
+        <input type="file" name="image" id="car-image-upload" />
+    </div>
+
+    <div>
+        <label for="availability-selection">Availability:</label>
+        <select name="availabilityStatus" id="availability-selection" required>
+            <option value="true" <%= car.availabilityStatus ? 'selected' : '' %>>Available</option>
+            <option value="false" <%= !car.availabilityStatus ? 'selected' : '' %>>Not Available</option>
+        </select>
+    </div>
+
+    <div>
+        <button type="submit">Save Changes</button>
+    </div>
+</form>
+
+<%- include('../partials/footer.ejs') %>

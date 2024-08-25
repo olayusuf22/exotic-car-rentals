@@ -1,0 +1,50 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Add a New Car to Your Fleet</h1>
+
+<form action="/cars" method="POST" enctype="multipart/form-data" class="vehicle-form">
+
+    <div class="form-item">
+        <label for="car-model">Car Model:</label>
+        <input type="text" name="carModel" id="car-model" required placeholder="Enter the car model" class="input-field">
+    </div>
+
+    <div class="form-item">
+        <label for="year-manufactured">Manufacturing Year:</label>
+        <input type="number" name="year" id="year-manufactured" required min="1900" max="<%= new Date().getFullYear() %>" class="input-field">
+    </div>
+
+    <div class="form-item">
+        <label for="car-category">Car Type:</label>
+        <select name="type" id="car-category" required class="select-field">
+            <option value="" disabled selected>Choose a type</option>
+            <% types.forEach(function(type) { %>
+                <option value="<%= type %>"><%= type %></option>
+            <% }) %>
+        </select>
+    </div>
+
+    <div class="form-item">
+        <label for="daily-price">Daily Rental Price ($):</label>
+        <input type="number" name="pricePerDay" id="daily-price" required step="0.01" placeholder="Set a rental price" class="input-field">
+    </div>
+
+    <div class="form-item">
+        <label for="vehicle-image">Upload an Image:</label>
+        <input type="file" name="image" id="vehicle-image" accept="image/*" class="input-field">
+    </div>
+
+    <div class="form-item">
+        <label for="availability">Availability:</label>
+        <select name="availabilityStatus" id="availability" required class="select-field">
+            <option value="true" selected>Available</option>
+            <option value="false">Not Available</option>
+        </select>
+    </div>
+
+    <div class="form-item">
+        <button type="submit" class="submit-button">Add Car</button>
+    </div>
+</form>
+
+<%- include('../partials/footer.ejs') %>
