@@ -53,6 +53,10 @@ app.get('/', async (req, res) => {
   res.render('home.ejs');
 });
 
+app.get('/reservation', (req, res) => {
+  const cities = ['New York', 'Los Angeles', 'Miami', 'Chicago', 'Houston', 'Dallas', 'Las Vegas'];
+  res.render('reservation', { user: req.user, cities: cities });
+});
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
