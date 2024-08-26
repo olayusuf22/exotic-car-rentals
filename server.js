@@ -48,6 +48,7 @@ app.get('/', async (req, res) => {
 // '/auth' is a "starts with" path that all paths
 // within authCtrl are appended to
 app.use('/auth', require('./controllers/auth'));
+app.use('/', require('./controllers/reservations'));
 app.use('/cars', require('./controllers/cars'));
 // If you wanted to protect ALL routes 
 // app.use('/todos', ensureLoggedIn, require('./controllers/todos'));
