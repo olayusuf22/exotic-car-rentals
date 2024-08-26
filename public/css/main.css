@@ -6,12 +6,38 @@
 
 body {
   margin: 0;
-  background-image: url('https://wallpapers.com/images/high/lamborghini-urus-4096-x-2304-wallpaper-j6gdm7kkcrqznfso.webp');
   background-size: cover;
   background-position: center;
   height: 100vh;
   display: grid;
   grid-template-rows: 8vh 1fr 4vh;
+  animation: slideshow 15s infinite;
+}
+
+@keyframes slideshow {
+  0% {
+    background-image: url('https://wallpapers.com/images/high/lamborghini-urus-4096-x-2304-wallpaper-j6gdm7kkcrqznfso.webp');
+  }
+  20%
+  {
+    background-image: url('https://wallpapers.com/images/high/mercedes-amg-background-kqt8sc4q8ec5gvo7.webp');
+  }
+
+  33% {
+    background-image: url('https://wallpapers.com/images/high/rolls-royce-1920-x-1080-background-nx24f72uget7wq3q.webp');
+  }
+  34% {
+    background-image: url('https://wallpapers.com/images/high/blue-sports-car-sunrise-qt9gou1a6u74h7oi.webp');
+  }
+  66% {
+    background-image: url('https://wallpapers.com/images/high/caption-ravishing-beauty-and-power-the-ferrari-488-gtb-cep3ecci7dc8xb1y.webp');
+  }
+  67% {
+    background-image: url('https://wallpapers.com/images/high/best-cars-background-bdm253vlkohimmr3.webp');
+  }
+  100% {
+    background-image: url('https://wallpapers.com/images/high/stylish-lamborghini-aventador-in-vibrant-sunset-ixa2ov4a8iegwsoo.webp');
+  }
 }
 
 .city-container {

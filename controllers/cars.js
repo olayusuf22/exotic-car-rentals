@@ -1,58 +1,72 @@
 const express = require('express');
 const router = express.Router();
-const ensureLoggedIn = require('../middleware/ensureLoggedIn');
 const Car = require('../models/car');
 
-// all paths start with '/cars'
-
-// GET /cars --> INDEX FUNCTIONALITY
-router.get('/', ensureLoggedIn, async (req, res) => {
-  const cars = await Car.find({ owner: req.user._id }).populate('owner');
-  res.render('cars/index.ejs', { cars });
+// CREATE: Show form to add a new car
+router.get('/new', (req, res) => {
+  res.render('car-form', { car: {} });
 });
 
-// GET /cars/new --> NEW FUNCTIONALITY 
-router.get('/new', ensureLoggedIn, (req, res) => {
-  const types = Car.schema.path('type').enumValues;
-  res.render('cars/new.ejs', { types });
-});
-
-// GET /cars/:carId --> SHOW FUNCTIONALITY 
-router.get('/:carId', async (req, res) => {
-  const car = await Car.findById(req.params.carId).populate('owner');
-  res.render('cars/show.ejs', { car });
-});
-
-// GET /cars/:carId/edit --> EDIT FUNCTIONALITY
-router.get('/:carId/edit', ensureLoggedIn, async (req, res) => {
-  const car = await Car.findById(req.params.carId);
-  const types = Car.schema.path('type').enumValues;
-  res.render('cars/edit.ejs', { car, types });
-});
-
-// POST /cars --> CREATE FUNCTIONALITY 
-router.post('/', ensureLoggedIn, async (req, res) => {
+// CREATE: Handle the form submission to add a new car
+router.post('/', async (req, res) => {
   try {
-    req.body.owner = req.user._id;
-    await Car.create(req.body);
-  } catch (error) {
-    console.log(error);
+    const newCar = new Car(req.body);
+    await newCar.save();
+    res.redirect('/cars');
+  } catch (err) {
+    res.status(400).send('Unable to save data');
   }
-  res.redirect('/cars');
 });
 
-// DELETE /cars/:carId --> DELETE FUNCTIONALITY 
-router.delete('/:carId', ensureLoggedIn, async (req, res) => {
-  await Car.findByIdAndDelete(req.params.carId);
-  res.redirect('/');
+// READ: Display all cars (Inventory page)
+router.get('/', async (req, res) => {
+  try {
+    const cars = await Car.find({});
+    res.render('cars/index.ejs', { cars });
+  } catch (err) {
+    console.log(err)
+    res.status(500).send(err);
+  }
 });
 
-// UPDATE /cars/:carId --> UPDATE FUNCTIONALITY 
-router.put('/:carId', ensureLoggedIn, async (req, res) => {
-  const updateCar = await Car.findByIdAndUpdate({ _id: req.params.carId }, req.body, { new: true });
-  res.redirect(`/cars/${updateCar._id}`);
+// READ: Display a single car's details
+router.get('/:id', async (req, res) => {
+  try {
+    const car = await Car.findById(req.params.id);
+    res.render('car-detail', { car });
+  } catch (err) {
+    res.status(500).send('Error retrieving data');
+  }
 });
 
+// UPDATE: Show form to edit an existing car
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const car = await Car.findById(req.params.id);
+    res.render('car-form', { car });
+  } catch (err) {
+    res.status(500).send('Error retrieving data');
+  }
+});
 
+// UPDATE: Handle form submission to update an existing car
+router.post('/:id', async (req, res) => {
+  try {
+    await Car.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect('/cars');
+  } catch (err) {
+    res.status(400).send('Unable to update data');
+  }
+});
+
+// DELETE: Remove a car from the inventory
+router.post('/:id/delete', async (req, res) => {
+  try {
+    await Car.findByIdAndRemove(req.params.id);
+    res.redirect('/cars');
+  } catch (err) {
+    res.status(500).send('Error deleting data');
+  }
+});
 
 module.exports = router;

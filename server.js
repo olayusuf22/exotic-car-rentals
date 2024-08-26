@@ -40,18 +40,20 @@ app.use(addUserToReqAndLocals);
 
 const ensureLoggedIn = require('./middleware/ensureLoggedIn');
 
-// '/auth' is a "starts with" path that all paths
-// within authCtrl are appended to
-app.use('/auth', require('./controllers/auth'));
-app.use('/car', require('./controllers/cars'));
-// If you wanted to protect ALL routes 
-// app.use('/todos', ensureLoggedIn, require('./controllers/todos'));
-
-
 // GET / (root/landing page)
 app.get('/', async (req, res) => {
   res.render('home.ejs');
 });
+
+// '/auth' is a "starts with" path that all paths
+// within authCtrl are appended to
+app.use('/auth', require('./controllers/auth'));
+app.use('/cars', require('./controllers/cars'));
+// If you wanted to protect ALL routes 
+// app.use('/todos', ensureLoggedIn, require('./controllers/todos'));
+
+
+
 
 app.get('/reservation', (req, res) => {
   const cities = ['New York', 'Los Angeles', 'Miami', 'Chicago', 'Houston', 'Dallas', 'Las Vegas'];
@@ -64,23 +66,23 @@ const port = process.env.PORT ? process.env.PORT : "3000";
 // const port = process.env.PORT || "3000";
 
 
-app.get('/', (req, res) => {
-  // Fetch or define the cars data
-  const cars = [
-    {
-      name: 'Ferrari',
-      locations: ['New York', 'Los Angeles']
-    },
-    {
-      name: 'Lamborghini',
-      locations: ['Miami', 'Chicago']
-    }
-    // Add more cars as needed
-  ];
+// app.get('/', (req, res) => {
+//   // Fetch or define the cars data
+//   const cars = [
+//     {
+//       name: 'Ferrari',
+//       locations: ['New York', 'Los Angeles']
+//     },
+//     {
+//       name: 'Lamborghini',
+//       locations: ['Miami', 'Chicago']
+//     }
+//     // Add more cars as needed
+//   ];
 
-  // Render the home.ejs view, passing the cars data
-  res.render('home', { cars });
-});
+//   // Render the home.ejs view, passing the cars data
+//   res.render('home', { cars });
+// });
 
 
 app.listen(port, () => {
