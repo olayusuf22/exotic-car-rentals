@@ -10,7 +10,9 @@
 </div>
 
 <form action="/cars/<%= car._id %>/reservations" method="POST">
- <button type="submit">Reserve car</button>                   
+    <input type="date" name="pickupDate" placeholder="PICKUP DATE">
+    <input type="date" name="returnDate" placeholder="RETURN DATE">
+    <button type="submit">Reserve car</button>                 
 </form>
 
 
