@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Your Reservations</h1>
+
+<% if (reservations.length > 0) { %>
+    <div class="reservation-list">
+        <% reservations.forEach(function(reservation) { %>
+            <div class="car-item">
+                <h2><%= reservation.car.name %> (<%= reservation.car.city %>)</h2>
+                <p>pickupDate: <%= reservation.pickupDate %></p>
+                <p>Rental Rate: $<%= reservation.car.price %>/day</p>
+                <img src="<%= reservation.car.image  %>" alt="car">
+                <form action="/reservations/<%= reservation._id %>?_method=DELETE" method="POST">
+                    <button type="submit">x</button>
+                </form>
+
+            </div>
+        <% }) %>
+    </div>
+<% } else { %>
+    <div class="no-reservations">
+        <p>You have not added any vehicles to your collection yet. Start by <a href="/cars/new">adding a car</a>.</p>
+    </div>
+<% } %>
+
+<%- include('../partials/footer.ejs') %>

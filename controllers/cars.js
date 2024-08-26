@@ -69,39 +69,8 @@ router.post('/:id/delete', async (req, res) => {
   }
 });
 
-// READ: Display reservation page for a car
-router.get('/:id/reservations', async (req, res) => {
-  try {
-    const car = await Car.findById(req.params.id);
-    res.render('reservations/new.ejs', { car });
-  } catch (err) {
-    res.status(500).send('Error retrieving data');
-  }
-});
 
-// create a reservation for a car
-router.post('/:id/reservations', async (req, res) => {
-  try {
-    const car = await Car.findById(req.params.id);
-    req.body.user = req.user._id;
-    car.reservations.push(req.body)
-    await car.save()
-    console.log(car)
-    res.redirect('/reservations' );
-  } catch (err) {
-    res.status(500).send('Error retrieving data');
-  }
-});
 
-// this is a  user reservations index
-router.get('/:id/reservations', async (req, res) => {
-  try {
-    const car = await Car.findById(req.params.id);
-    res.render('reservations/new.ejs', { car });
-  } catch (err) {
-    res.status(500).send('Error retrieving data');
-  }
-});
 
 
 module.exports = router;
