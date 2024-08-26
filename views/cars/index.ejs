@@ -10,7 +10,8 @@
                 <p>Category: <%= car.type %></p>
                 <p>Rental Rate: $<%= car.price %>/day</p>
                 <img src="<%= car.image  %>" alt="car">
-                <form action=""></form>
+
+                <a href="/cars/<%= car._id %>/reservations">Reserve this car</a>
             </div>
         <% }) %>
     </div>

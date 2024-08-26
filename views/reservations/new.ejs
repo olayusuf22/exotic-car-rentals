@@ -1,0 +1,17 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Make a Reservation</h1>
+
+<div class="car-item">
+    <h2><a href="/cars/<%= car._id %>"><%= car.name %> (<%= car.city %>)</a></h2>
+    <p>Category: <%= car.type %></p>
+    <p>Rental Rate: $<%= car.price %>/day</p>
+    <img src="<%= car.image  %>" alt="car">
+</div>
+
+<form action="/cars/<%= car._id %>/reservations" method="POST">
+ <button type="submit">Reserve car</button>                   
+</form>
+
+
+<%- include('../partials/footer.ejs') %>

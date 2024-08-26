@@ -69,4 +69,15 @@ router.post('/:id/delete', async (req, res) => {
   }
 });
 
+// READ: Display reservation page for a car
+router.get('/:id/reservations', async (req, res) => {
+  try {
+    const car = await Car.findById(req.params.id);
+    res.render('reservations/new.ejs', { car });
+  } catch (err) {
+    res.status(500).send('Error retrieving data');
+  }
+});
+
+
 module.exports = router;
