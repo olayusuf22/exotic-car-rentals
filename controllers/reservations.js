@@ -47,4 +47,14 @@ router.delete('/reservations/:id', async (req, res) => {
   }
 });
 
+// // This is update reservations
+// router.update('/reservations/:id', async (req, res) => {
+//   try {
+//     await Reservation.findByIdAndDelete(req.params.id)
+//     res.redirect('/reservations')
+//   } catch (err) {
+//     res.status(500).send('Error retrieving data');
+//   }
+// });
+
 module.exports = router;

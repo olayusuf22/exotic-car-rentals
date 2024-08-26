@@ -63,29 +63,10 @@ app.get('/reservation', (req, res) => {
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
-// An alternative to above
-// const port = process.env.PORT || "3000";
 
-
-// app.get('/', (req, res) => {
-//   // Fetch or define the cars data
-//   const cars = [
-//     {
-//       name: 'Ferrari',
-//       locations: ['New York', 'Los Angeles']
-//     },
-//     {
-//       name: 'Lamborghini',
-//       locations: ['Miami', 'Chicago']
-//     }
-//     // Add more cars as needed
-//   ];
-
-//   // Render the home.ejs view, passing the cars data
-//   res.render('home', { cars });
-// });
 
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });
+
