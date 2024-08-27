@@ -24,7 +24,14 @@ const carData = [
         city: "Dallas, Houston, Los angeles, Miami, Las vegas, Newyork, Tampa"
     },
 
-    
+    {
+        name: "bugatti", 
+        image: 'https://wallpapers.com/images/high/bugatti-background-q8pxjgcwj7usezp9.webp',
+        price: 2000,
+        currency: "usd",
+        city: "Dallas, Houston, Los angeles, Miami, Las vegas, Newyork, Tampa"
+    },
+
     {
         name: "mercedes-amg", 
         image: 'https://wallpapers.com/images/high/mercedes-amg-background-kqt8sc4q8ec5gvo7.webp',

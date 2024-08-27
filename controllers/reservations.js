@@ -47,14 +47,11 @@ router.delete('/reservations/:id', async (req, res) => {
   }
 });
 
-// // This is update reservations
-// router.update('/reservations/:id', async (req, res) => {
-//   try {
-//     await Reservation.findByIdAndDelete(req.params.id)
-//     res.redirect('/reservations')
-//   } catch (err) {
-//     res.status(500).send('Error retrieving data');
-//   }
-// });
+// This is update car from inventory
+router.put('/:carId', async (req, res) => {
+  const updateCar = await Car.findByIdAndUpdate({_id: req.params.carId}, req.body, {new: true});
+  res.redirect(`/cars/${updateCar._id}`);
+});
+
 
 module.exports = router;

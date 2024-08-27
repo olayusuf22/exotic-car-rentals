@@ -69,8 +69,10 @@ router.post('/:id/delete', async (req, res) => {
   }
 });
 
-
-
-
+// This is update car from inventory
+router.put('/:carId', async (req, res) => {
+  const updateCar = await Car.findByIdAndUpdate({_id: req.params.carId}, req.body, {new: true});
+  res.redirect(`/cars/${updateCar._id}`);
+});
 
 module.exports = router;
