@@ -18,9 +18,6 @@
         <label for="car-category">Category:</label>
         <select name="type" id="car-category" required>
             <option value="<%= car.type %>" selected><%= car.type %></option>
-            <% types.forEach((type) => { %>
-                <option value="<%= type %>"><%= type %></option>
-            <% }) %>
         </select>
     </div>
 

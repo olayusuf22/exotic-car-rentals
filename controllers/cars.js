@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
   try {
     const car = await Car.findById(req.params.id);
-    res.render('car-form', { car });
+    res.render('cars/edit.ejs', { car });
   } catch (err) {
     res.status(500).send('Error retrieving data');
   }

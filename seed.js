@@ -1,7 +1,7 @@
 (async function() {
 const carData = [
     {
-        name: "lamborghini", 
+        name: "Lamborghini", 
         image: 'https://wallpapers.com/images/high/lamborghini-urus-4096-x-2304-wallpaper-j6gdm7kkcrqznfso.webp',
         price: 2000,
         currency: "usd",
@@ -9,7 +9,7 @@ const carData = [
     },
 
     {
-        name: "ferrari", 
+        name: "Ferrari", 
         image: 'https://wallpapers.com/images/high/caption-ravishing-beauty-and-power-the-ferrari-488-gtb-cep3ecci7dc8xb1y.webp',
         price: 2000,
         currency: "usd",
@@ -17,7 +17,7 @@ const carData = [
     },
 
     {
-        name: "rolls-royce", 
+        name: "Rolls-royce", 
         image: 'https://wallpapers.com/images/high/rolls-royce-1920-x-1080-background-nx24f72uget7wq3q.webp',
         price: 2000,
         currency: "usd",
@@ -25,7 +25,7 @@ const carData = [
     },
 
     {
-        name: "bugatti", 
+        name: "Bugatti", 
         image: 'https://wallpapers.com/images/high/bugatti-background-q8pxjgcwj7usezp9.webp',
         price: 2000,
         currency: "usd",
@@ -33,7 +33,7 @@ const carData = [
     },
 
     {
-        name: "mercedes-amg", 
+        name: "Mercedes-amg", 
         image: 'https://wallpapers.com/images/high/mercedes-amg-background-kqt8sc4q8ec5gvo7.webp',
         price: 2000,
         currency: "usd",
@@ -42,7 +42,7 @@ const carData = [
 
 
     {
-        name: "lamborghini-aventador", 
+        name: "Lamborghini-aventador", 
         image: 'https://wallpapers.com/images/high/stylish-lamborghini-aventador-in-vibrant-sunset-ixa2ov4a8iegwsoo.webp',
         price: 2000,
         currency: "usd",
