@@ -2,7 +2,7 @@
 Project Overview
 The Exotic Car Rentals application is a web-based platform that allows users to browse, rent, and manage exotic cars. The application features user authentication, dynamic content loading, and a user-friendly interface for both renters and administrators.
 
-Features
+## Features
 User Authentication: Secure sign-up, log-in, and log-out functionalities for users.
 Car Browsing: Users can browse through a curated list of exotic cars available for rent.
 Car Management: Administrators can add, update, and delete car listings.
@@ -19,8 +19,7 @@ HTML: Structure of the web pages.
 CSS: Styling and layout of the application.
 JavaScript: Enhances interactivity and client-side logic.
 
-Backend:
-
+## Backend:
 Node.js: Server-side runtime environment.
 Express: Web application framework for Node.js to build APIs and handle routing.
 MongoDB: NoSQL database used for storing car listings, user data, and other dynamic content.
