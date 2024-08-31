@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+  background-image: url('https://wallpapers.com/images/high/lamborghini-urus-4096-x-2304-wallpaper-j6gdm7kkcrqznfso.webp');
   padding: 10;
   margin: 0;
 }
@@ -8,7 +9,7 @@
 body {
   margin: 0;
   background-size: cover;
-  background-color: rgb(214, 195, 195);
+  background-color: rgb(149, 80, 80);
   background-position: center;
   height: 100vh;
   display: grid;
@@ -68,7 +69,7 @@ body {
 }
 
 nav, footer {
-  background-color:rgb(181, 172, 191);
+  background-color:rgb(123, 62, 193);
   display: flex;
   justify-content: space-between;
   align-items: center;
